@@ -6,13 +6,13 @@
 
 SUBJECT=no_se_que_poner
 VERSION=0.1.0
-USAGE="Usage: ./pull.sh"
+USAGE="Usage: ./pull.sh \"commit msg\""
 
 # --- Option processing --------------------------------------------
-#if [ $# == 0 ] ; then
-#   echo $USAGE
-#    exit 1;
-#fi
+if [ $# == 0 ] ; then
+    echo $USAGE
+    exit 1;
+fi
 
 while getopts ":vh" optname
   do
@@ -58,14 +58,18 @@ trap "rm -f $LOCK_FILE" EXIT
 touch $LOCK_FILE
 
 # -----------------------------------------------------------------
+cp /home/santi/.config/i3/* ./
+cp -r /home/santi/.fonts ./
+cp /home/santi/.bashrc ./
+cp /etc/bash.bashrc ./
 
-git pull
 
-cp ./config /home/santi/.config/i3/
-cp ./i3blocks.conf /home/santi/.config/i3/
-cp -r ./.fonts /home/santi/.fonts
-cp ./.bashrc /home/santi/.bashrc
-cp ./bash.bashrc /etc/bash.bashrc
+git add *
+git add .bashrc
+git add .fonts
 
+git commit -m "$1"
+#git remote add centralized_config https://github.com/SantiagoRotman/centralized_config.git
+git push -u centralized_config master
 
 # -----------------------------------------------------------------

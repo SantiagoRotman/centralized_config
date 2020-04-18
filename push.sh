@@ -6,7 +6,7 @@
 
 SUBJECT=no_se_que_poner
 VERSION=0.1.0
-USAGE="Usage: ./pull.sh \"commit msg\""
+USAGE="Usage: ./push.sh "
 
 # --- Option processing --------------------------------------------
 if [ $# == 0 ] ; then

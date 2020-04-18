@@ -63,7 +63,7 @@ git pull
 
 cp ./config /home/santi/.config/i3/
 cp ./i3blocks.conf /home/santi/.config/i3/
-cp ./.fonts /home/santi/.fonts
+cp -r ./.fonts /home/santi/.fonts
 cp ./.bashrc /home/santi/.bashrc
 cp ./bash.bashrc /etc/bash.bashrc
 
